@@ -63,22 +63,23 @@ function render() {
 		document.getElementById("section-browse").appendChild("#section-browse ul");
 		// TODO 4
 		// the list item should include a button that says "Add to Watchlist"
-		document.createElement("button").appendChild(listItem).innerHTML = "Add to Watchlist";
+		var button = document.createElement("<button></button>").text("Add to Watchlist");
+		// .document.createElement("button").appendChild(listItem).innerHTML = "Add to Watchlist";
+		// button.addEventListener
 		// TODO 5
 		// when the button is clicked, this movie should be added to the model's watchlist and render() should be called again
-		button.onclick = function() {
+		button.click(function() {
+			console.log("Your selection has been added to your Watchlist");
 			document.getElementById("section-watchlist")
 			return render
-		}
 
   });
   
-}
-
-
+})
 // When the HTML document is ready, we call the discoverMovies function,
 // and pass the render function as its callback
 $(document).ready(function() {
   discoverMovies(render);
 });
 
+}
