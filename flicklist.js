@@ -8,7 +8,7 @@ var model = {
 
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "eac5927be35555faef32a5577e32e717f" // TODO 0 put your api key here
+  token: "eac5927be35555faef32a5577e32e717" // TODO 0 put your api key here
 }
 
 
@@ -30,7 +30,7 @@ function discoverMovies(callback) {
 			// update the model, setting its .browseItems property equal to the movies we recieved in the response\
 			model.browseItems = response.results;
 			// invoke the callback function that was passed in. 
-			callback();
+			callback(response);
 		}
 	});
   
@@ -59,23 +59,22 @@ function render() {
 		var title = $("<h4></h4>").text(movie.original_title);
 		// TODO 4
 		// the list item should include a button that says "Add to Watchlist"
-		var button = $("<button></button")
+		var button = $("<button></button>")
 			.text("Add to Watchlist")
 		// TODO 5
 		// when the button is clicked, this movie should be added to the model's watchlist and render() should be called again
-			.click(function() {
-				model.watchlistItems.push(movie);
-				render();
-				console.log("Your selection has been added to your Watchlist");
-			});
+			// .click(function() {
+			// 	model.watchlistItems.push(movie);
+			// 	render();
+			// 	console.log("Your selection has been added to your Watchlist");
+			// });
 
   });
   
-});
+};
 // When the HTML document is ready, we call the discoverMovies function,
 // and pass the render function as its callback
 $(document).ready(function() {
   discoverMovies(render);
 });
 
-}
