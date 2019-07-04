@@ -59,22 +59,6 @@ function searchMovies(searchTerm, callback) {
       discoverMovies(data,callback);
     })
 
-    // function searchMovies(query, callback) {
- 
-    //   $.ajax({
-    //     url: api.root + "/search/movie",
-    //     data: {
-    //       api_key: api.token,
-    //       query: query
-    //     },
-    
-    //   success: function(response) {
-    //     model.browseItems=response.results;
-    //     callback(response);
-    //     console.log("searching for movies with" + searchTerm + " in their title...");
-    //   // }
-    // });
-    // }
   // TODO 9
   // implement this function as described in the comment above
   // you can use the body of discoverMovies as a jumping off point
