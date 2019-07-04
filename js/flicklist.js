@@ -47,7 +47,34 @@ function discoverMovies(callback) {
  */
 function searchMovies(searchTerm, callback) {
   console.log("searching for movies with '" + searchTerm + "' in their title...");
+  fetchKeywords(
+    query,
+    function(keywordsResponse) {
+      console.log("successfull");
+      var firstKeywordID = keywordsResponse.results[0].id
+      var data = {
+        api_key: api.token,
+        with_keywords: firstKeywordID
+      };
+      discoverMovies(data,callback);
+    })
 
+    // function searchMovies(query, callback) {
+ 
+    //   $.ajax({
+    //     url: api.root + "/search/movie",
+    //     data: {
+    //       api_key: api.token,
+    //       query: query
+    //     },
+    
+    //   success: function(response) {
+    //     model.browseItems=response.results;
+    //     callback(response);
+    //     console.log("searching for movies with" + searchTerm + " in their title...");
+    //   // }
+    // });
+    // }
   // TODO 9
   // implement this function as described in the comment above
   // you can use the body of discoverMovies as a jumping off point
@@ -72,6 +99,7 @@ function render() {
       .append(title)
       // TODO 3
       // give itemView a class attribute of "item-watchlist"
+      .attr("class,", "item-watchlist");
 
     $("#section-watchlist ul").append(itemView);
   });
@@ -81,6 +109,7 @@ function render() {
     var title = $("<h4></h4>").text(movie.original_title);
     var button = $("<button></button>")
       .text("Add to Watchlist")
+      .attr("class", "button")
       .click(function() {
         model.watchlistItems.push(movie);
         render();
@@ -89,18 +118,21 @@ function render() {
       // the button should be disabled if this movie is already in
       // the user's watchlist
       // see jQuery .prop() and Array.indexOf()
+      var alreadyOnWatchlist = model.watchlistItems.indexOf(movie.original_title) !== -1
+      $("#add-to-watchlist").prop("disabled", alreadyOnWatchlist);
 
 
     // TODO 1
     // create a paragraph containing the movie object's .overview value
     // then, in the code block below,
     // append the paragraph in between the title and the button
-
-
+    var overview = $("<p></p>").text(movie.overview)
+  
     // append everything to itemView, along with an <hr/>
     var itemView = $("<li></li>")
       .append($("<hr/>"))
       .append(title)
+      .append(overview)
       .append(button);
 
     // append the itemView to the list

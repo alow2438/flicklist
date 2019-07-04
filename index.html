@@ -31,6 +31,10 @@
       TODO 6
       add a <form> here for users to search for movies by title 
       -->
+      <form id="form-search">
+          <input type = "text" value="Search by Title">
+          <input type = "submit" value = "Submit">
+        </form>
 
     </header>
 
@@ -43,18 +47,18 @@
     // TODO 8
     // fill in the missing pieces of the code below
 
-    $("TODO 8a").submit(function(evt) {
+    // $("#form-search").submit(function(evt) {
 
-      // first, we cancel the default action (which would leave the page)
-      evt.preventDefault();
+    //   // first, we cancel the default action (which would leave the page)
+    //   evt.preventDefault();
 
-      // figure out what the user typed
-      var searchTerm = $("TODO 8b").val();
+    //   // figure out what the user typed
+    //   var query = $("#form-search input[name=query]").val();
 
-      // TODO 8c invoke the searchMovies function,
-      // passing in the search term, and render as the callback
-
-    });
+    //   // TODO 8c invoke the searchMovies function,
+    //   // passing in the search term, and render as the callback
+    //   searchMovies(query, render);
+    // });
   </script>
 
 </body> 
